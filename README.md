@@ -12,6 +12,8 @@ Flashy es una app tipo Uber enfocada en operar exclusivamente en Santiago de Chi
 ## Funcionalidad implementada
 
 - Registro/Login para pasajeros y conductores
+- Onboarding completo pasajero (identidad, contacto, direccion y emergencia)
+- Onboarding completo conductor (identidad, contacto, licencia, vehiculo y seguro)
 - Solicitud de viaje con geocerca estricta de Santiago
 - Estimacion de tarifa en CLP por distancia
 - Conductores online/offline
@@ -47,6 +49,12 @@ Guia detallada:
 npx prisma migrate dev --name init
 npm run prisma:seed
 npm run dev
+```
+
+Si ya tienes una base creada con una version anterior, aplica primero la migracion:
+
+```bash
+npx prisma migrate deploy
 ```
 
 ## Credenciales seed

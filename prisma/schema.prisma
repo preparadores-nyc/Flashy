@@ -32,6 +32,25 @@ model User {
   id           String       @id @default(cuid())
   email        String       @unique
   passwordHash String
+  firstName    String?
+  lastName     String?
+  phone        String?
+  countryCode  String?
+  nationalId   String?
+  dateOfBirth  DateTime?
+  addressLine1 String?
+  commune      String?
+  city         String?
+  emergencyName String?
+  emergencyPhone String?
+  licenseNumber String?
+  licenseExpiry DateTime?
+  vehicleMake   String?
+  vehicleModel  String?
+  vehicleYear   Int?
+  vehicleColor  String?
+  vehiclePlate  String?
+  insurancePolicy String?
   role         Role
   driverStatus DriverStatus @default(OFFLINE)
   currentLat   Float?
