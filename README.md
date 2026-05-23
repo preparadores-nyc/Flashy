@@ -27,41 +27,25 @@ Todos los endpoints validan coordenadas dentro del bounding box de Santiago:
 - Latitud: -33.75 a -33.2
 - Longitud: -70.9 a -70.4
 
-## Levantar localmente
+## Flujo recomendado: 100% nube en GitHub
 
-1. Instalar dependencias
+- Desarrollo en GitHub Codespaces (sin instalar entorno local)
+- Variables en GitHub Secrets (Codespaces y Actions)
+- Base de datos Postgres administrada en la nube
+- CI automatica en GitHub Actions
 
-```bash
-npm install
-```
+Guia detallada:
+- docs/cloud-only-setup.md
 
-2. Copiar variables
+## Levantar en Codespaces
 
-```bash
-cp .env.example .env
-```
-
-3. Levantar PostgreSQL
-
-```bash
-docker compose up -d
-```
-
-4. Migrar base de datos
+1. Abrir el repo en GitHub
+2. Code -> Codespaces -> Create codespace on main
+3. En la terminal del Codespace ejecutar:
 
 ```bash
 npx prisma migrate dev --name init
-```
-
-5. Cargar datos semilla
-
-```bash
 npm run prisma:seed
-```
-
-6. Ejecutar app
-
-```bash
 npm run dev
 ```
 
