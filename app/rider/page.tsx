@@ -111,7 +111,7 @@ export default function RiderPage() {
 
   return (
     <main className="container">
-      <div className="fx-wrap" aria-hidden>
+      <div className="fx-wrap" aria-hidden="true">
         <span className="fx-orb a" />
         <span className="fx-orb b" />
         <span className="fx-orb c" />
@@ -119,25 +119,26 @@ export default function RiderPage() {
 
       <section className="hero">
         <span className="pill">Experiencia Pasajero</span>
-        <h1 className="brand">Viaja con Estilo · Flashy</h1>
+        <h1 className="brand">Viaja con Estilo</h1>
         <p className="subtitle">Tu movilidad en Santiago, rediseñada para ser más elegante, rápida y segura.</p>
       </section>
 
       <div className="grid">
-        <section className="glass panel" style={{ animationDelay: "0.1s" }}>
-          <h2 className="title" style={{ color: '#004e92', marginBottom: '20px', fontSize: '1.2rem' }}>1) Registro de Pasajero</h2>
+        {/* Registration Panel */}
+        <section className="glass panel" style={{ animation: "fadeUp 0.7s 0.1s ease-out both" }}>
+          <h2 className="title">Registro de Pasajero</h2>
           <form onSubmit={registerRider}>
-            <div className="row">
-              <div style={{ marginBottom: '10px' }}>
-                <label style={{ fontSize: '12px', color: '#4a5a6a', marginLeft: '5px' }}>Nombre</label>
+            <div className="row" style={{ marginBottom: 12 }}>
+              <div>
+                <label className="small" style={{ display: "block", marginBottom: 6, marginLeft: 4 }}>Nombre</label>
                 <input
                   placeholder="Ej: Juan"
                   value={registration.firstName}
                   onChange={(e) => setRegistration((p) => ({ ...p, firstName: e.target.value }))}
                 />
               </div>
-              <div style={{ marginBottom: '10px' }}>
-                <label style={{ fontSize: '12px', color: '#4a5a6a', marginLeft: '5px' }}>Apellido</label>
+              <div>
+                <label className="small" style={{ display: "block", marginBottom: 6, marginLeft: 4 }}>Apellido</label>
                 <input
                   placeholder="Ej: Pérez"
                   value={registration.lastName}
@@ -145,17 +146,17 @@ export default function RiderPage() {
                 />
               </div>
             </div>
-            <div className="row">
-              <div style={{ marginBottom: '10px' }}>
-                <label style={{ fontSize: '12px', color: '#4a5a6a', marginLeft: '5px' }}>Email Corporativo</label>
+            <div className="row" style={{ marginBottom: 12 }}>
+              <div>
+                <label className="small" style={{ display: "block", marginBottom: 6, marginLeft: 4 }}>Email</label>
                 <input
                   placeholder="juan@ejemplo.cl"
                   value={registration.email}
                   onChange={(e) => setRegistration((p) => ({ ...p, email: e.target.value }))}
                 />
               </div>
-              <div style={{ marginBottom: '10px' }}>
-                <label style={{ fontSize: '12px', color: '#4a5a6a', marginLeft: '5px' }}>Contraseña</label>
+              <div>
+                <label className="small" style={{ display: "block", marginBottom: 6, marginLeft: 4 }}>Contraseña</label>
                 <input
                   placeholder="••••••••"
                   type="password"
@@ -164,7 +165,7 @@ export default function RiderPage() {
                 />
               </div>
             </div>
-            <div className="triple">
+            <div className="triple" style={{ marginBottom: 12 }}>
               <input
                 placeholder="+56"
                 value={registration.countryCode}
@@ -181,7 +182,7 @@ export default function RiderPage() {
                 onChange={(e) => setRegistration((p) => ({ ...p, nationalId: e.target.value }))}
               />
             </div>
-            <div className="row" style={{ marginTop: 10 }}>
+            <div className="row" style={{ marginBottom: 12 }}>
               <input
                 type="date"
                 value={registration.dateOfBirth}
@@ -193,14 +194,16 @@ export default function RiderPage() {
                 onChange={(e) => setRegistration((p) => ({ ...p, addressLine1: e.target.value }))}
               />
             </div>
-            <button style={{ marginTop: 20 }} type="submit">Crear Cuenta Premium</button>
+            <button type="submit" style={{ marginTop: 8 }}>Crear Cuenta Premium</button>
           </form>
         </section>
 
-        <div className="flex-col">
-          <section className="glass panel" style={{ animationDelay: "0.2s" }}>
-            <h2 className="title" style={{ color: '#004e92', marginBottom: '20px' }}>2) Acceso Rápido</h2>
-            <div className="row">
+        {/* Right Column */}
+        <div>
+          {/* Login Panel */}
+          <section className="glass panel" style={{ animation: "fadeUp 0.7s 0.2s ease-out both" }}>
+            <h2 className="title">Acceso Rápido</h2>
+            <div className="row" style={{ marginBottom: 16 }}>
               <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
               <input
                 placeholder="Contraseña"
@@ -209,22 +212,47 @@ export default function RiderPage() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="actions" style={{ marginTop: 20 }}>
+            <div className="actions">
               <button onClick={login}>Iniciar Sesión</button>
-              <button className="secondary" onClick={history}>Historial de Viajes</button>
+              <button className="secondary" onClick={history}>Historial</button>
             </div>
-            <div style={{ marginTop: '15px', textAlign: 'center' }}>
-              <span className={`pill ${token ? '' : 'secondary'}`} style={{ fontSize: '10px', background: token ? '' : '#eee', color: token ? '' : '#999' }}>
+            <div style={{ marginTop: 16, textAlign: "center" }}>
+              <span style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "8px 16px",
+                borderRadius: 50,
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.5px",
+                background: token
+                  ? "linear-gradient(135deg, rgba(105,240,174,0.3), rgba(40,199,111,0.2))"
+                  : "rgba(255,255,255,0.06)",
+                border: token
+                  ? "1px solid rgba(105,240,174,0.4)"
+                  : "1px solid rgba(255,255,255,0.1)",
+                color: token ? "#69f0ae" : "rgba(255,255,255,0.4)"
+              }}>
                 {token ? "✓ Sesión Activa" : "○ Sin Sesión"}
               </span>
             </div>
           </section>
 
-          <section className="glass panel" style={{ animationDelay: "0.3s", marginTop: '20px' }}>
-            <h2 className="title" style={{ color: '#004e92', marginBottom: '20px' }}>3) Solicitar Flashy</h2>
+          {/* Ride Request Panel */}
+          <section className="glass panel" style={{ marginTop: 24, animation: "fadeUp 0.7s 0.3s ease-out both" }}>
+            <h2 className="title">Solicitar Flashy</h2>
             <form onSubmit={requestRide}>
-              <div style={{ background: 'rgba(0,168,255,0.05)', padding: '15px', borderRadius: '16px', marginBottom: '15px' }}>
-                <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#004e92', marginBottom: '10px' }}>Punto de Recogida</p>
+              <div style={{
+                background: "rgba(79,195,247,0.08)",
+                padding: 16,
+                borderRadius: 16,
+                marginBottom: 14,
+                border: "1px solid rgba(79,195,247,0.15)"
+              }}>
+                <p className="small" style={{ fontWeight: 700, color: "#4fc3f7", marginBottom: 10 }}>
+                  📍 Punto de Recogida
+                </p>
                 <div className="row">
                   <input
                     type="number"
@@ -240,8 +268,16 @@ export default function RiderPage() {
                   />
                 </div>
               </div>
-              <div style={{ background: 'rgba(50,255,126,0.05)', padding: '15px', borderRadius: '16px', marginBottom: '15px' }}>
-                <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#004e92', marginBottom: '10px' }}>Destino Final</p>
+              <div style={{
+                background: "rgba(105,240,174,0.08)",
+                padding: 16,
+                borderRadius: 16,
+                marginBottom: 14,
+                border: "1px solid rgba(105,240,174,0.15)"
+              }}>
+                <p className="small" style={{ fontWeight: 700, color: "#69f0ae", marginBottom: 10 }}>
+                  🏁 Destino Final
+                </p>
                 <div className="row">
                   <input
                     type="number"
@@ -257,25 +293,17 @@ export default function RiderPage() {
                   />
                 </div>
               </div>
-              <button type="submit" style={{ background: 'linear-gradient(135deg, #32ff7e, #00d2ff)', color: '#004e92' }}>Solicitar Ahora</button>
+              <button className="accent" type="submit">Solicitar Ahora</button>
             </form>
           </section>
         </div>
       </div>
 
-      <section className="glass panel" style={{ marginTop: 24, animationDelay: "0.4s" }}>
-        <h2 className="title" style={{ color: '#004e92' }}>Estado del Sistema</h2>
+      {/* System Status */}
+      <section className="glass panel" style={{ marginTop: 24, animation: "fadeUp 0.7s 0.5s ease-out both" }}>
+        <h2 className="title">Estado del Sistema</h2>
         <pre>{result}</pre>
       </section>
-
-      <style jsx>{`
-        .flex-col { display: flex; flex-direction: column; }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .panel { animation: fadeIn 0.6s ease-out both; }
-      `}</style>
     </main>
   );
 }

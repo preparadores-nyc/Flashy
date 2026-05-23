@@ -147,7 +147,7 @@ export default function DriverPage() {
 
   return (
     <main className="container">
-      <div className="fx-wrap" aria-hidden>
+      <div className="fx-wrap" aria-hidden="true">
         <span className="fx-orb a" />
         <span className="fx-orb b" />
         <span className="fx-orb c" />
@@ -155,42 +155,62 @@ export default function DriverPage() {
 
       <section className="hero">
         <span className="pill">Portal de Socios</span>
-        <h1 className="brand">Conduce el Futuro · Flashy</h1>
+        <h1 className="brand">Conduce el Futuro</h1>
         <p className="subtitle">Gestión operativa premium para conductores profesionales en Santiago.</p>
       </section>
 
       <div className="grid">
-        <section className="glass panel" style={{ animationDelay: "0.1s" }}>
-          <h2 className="title" style={{ color: '#004e92', marginBottom: '20px' }}>1) Registro Profesional</h2>
-          <div className="row">
-            <input
-              placeholder="Nombre"
-              value={registration.firstName}
-              onChange={(e) => setRegistration((p) => ({ ...p, firstName: e.target.value }))}
-            />
-            <input
-              placeholder="Apellido"
-              value={registration.lastName}
-              onChange={(e) => setRegistration((p) => ({ ...p, lastName: e.target.value }))}
-            />
+        {/* Registration Panel */}
+        <section className="glass panel" style={{ animation: "fadeUp 0.7s 0.1s ease-out both" }}>
+          <h2 className="title">Registro Profesional</h2>
+          <div className="row" style={{ marginBottom: 12 }}>
+            <div>
+              <label className="small" style={{ display: "block", marginBottom: 6, marginLeft: 4 }}>Nombre</label>
+              <input
+                placeholder="Nombre"
+                value={registration.firstName}
+                onChange={(e) => setRegistration((p) => ({ ...p, firstName: e.target.value }))}
+              />
+            </div>
+            <div>
+              <label className="small" style={{ display: "block", marginBottom: 6, marginLeft: 4 }}>Apellido</label>
+              <input
+                placeholder="Apellido"
+                value={registration.lastName}
+                onChange={(e) => setRegistration((p) => ({ ...p, lastName: e.target.value }))}
+              />
+            </div>
           </div>
-          <div className="row" style={{ marginTop: 10 }}>
-            <input
-              placeholder="Email Corporativo"
-              value={registration.email}
-              onChange={(e) => setRegistration((p) => ({ ...p, email: e.target.value }))}
-            />
-            <input
-              type="password"
-              placeholder="Contraseña"
-              value={registration.password}
-              onChange={(e) => setRegistration((p) => ({ ...p, password: e.target.value }))}
-            />
+          <div className="row" style={{ marginBottom: 12 }}>
+            <div>
+              <label className="small" style={{ display: "block", marginBottom: 6, marginLeft: 4 }}>Email</label>
+              <input
+                placeholder="Email Corporativo"
+                value={registration.email}
+                onChange={(e) => setRegistration((p) => ({ ...p, email: e.target.value }))}
+              />
+            </div>
+            <div>
+              <label className="small" style={{ display: "block", marginBottom: 6, marginLeft: 4 }}>Contraseña</label>
+              <input
+                type="password"
+                placeholder="Contraseña"
+                value={registration.password}
+                onChange={(e) => setRegistration((p) => ({ ...p, password: e.target.value }))}
+              />
+            </div>
           </div>
-          
-          <div style={{ marginTop: '20px', borderTop: '1px solid rgba(0,78,146,0.1)', paddingTop: '20px' }}>
-            <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#004e92', marginBottom: '10px' }}>Datos del Vehículo</p>
-            <div className="triple">
+
+          {/* Vehicle Section */}
+          <div style={{
+            marginTop: 20,
+            paddingTop: 20,
+            borderTop: "1px solid rgba(255,255,255,0.1)"
+          }}>
+            <p className="small" style={{ fontWeight: 700, color: "#4fc3f7", marginBottom: 12 }}>
+              🚗 Datos del Vehículo
+            </p>
+            <div className="triple" style={{ marginBottom: 12 }}>
               <input
                 placeholder="Marca"
                 value={registration.vehicleMake}
@@ -208,7 +228,7 @@ export default function DriverPage() {
                 onChange={(e) => setRegistration((p) => ({ ...p, vehicleYear: Number(e.target.value) }))}
               />
             </div>
-            <div className="row" style={{ marginTop: 10 }}>
+            <div className="row">
               <input
                 placeholder="Patente"
                 value={registration.vehiclePlate}
@@ -221,14 +241,16 @@ export default function DriverPage() {
               />
             </div>
           </div>
-          
+
           <button style={{ marginTop: 20 }} onClick={registerDriver}>Activar Cuenta Socio</button>
         </section>
 
-        <div className="flex-col">
-          <section className="glass panel" style={{ animationDelay: "0.2s" }}>
-            <h2 className="title" style={{ color: '#004e92', marginBottom: '20px' }}>2) Acceso Socio</h2>
-            <div className="row">
+        {/* Right Column */}
+        <div>
+          {/* Login Panel */}
+          <section className="glass panel" style={{ animation: "fadeUp 0.7s 0.2s ease-out both" }}>
+            <h2 className="title">Acceso Socio</h2>
+            <div className="row" style={{ marginBottom: 16 }}>
               <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
               <input
                 placeholder="Contraseña"
@@ -237,70 +259,111 @@ export default function DriverPage() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button style={{ marginTop: 20 }} onClick={login}>Entrar al Portal</button>
+            <button onClick={login}>Entrar al Portal</button>
+            <div style={{ marginTop: 16, textAlign: "center" }}>
+              <span style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "8px 16px",
+                borderRadius: 50,
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.5px",
+                background: token
+                  ? "linear-gradient(135deg, rgba(105,240,174,0.3), rgba(40,199,111,0.2))"
+                  : "rgba(255,255,255,0.06)",
+                border: token
+                  ? "1px solid rgba(105,240,174,0.4)"
+                  : "1px solid rgba(255,255,255,0.1)",
+                color: token ? "#69f0ae" : "rgba(255,255,255,0.4)"
+              }}>
+                {token ? "✓ Sesión Activa" : "○ Sin Sesión"}
+              </span>
+            </div>
           </section>
 
-          <section className="glass panel" style={{ animationDelay: "0.3s", marginTop: '20px' }}>
-            <h2 className="title" style={{ color: '#004e92', marginBottom: '20px' }}>3) Operación y Disponibilidad</h2>
-            <div className="actions">
-              <button onClick={() => setAvailability(true)} style={{ background: 'linear-gradient(135deg, #32ff7e, #00d2ff)', color: '#004e92' }}>Ponerse Online</button>
+          {/* Availability Panel */}
+          <section className="glass panel" style={{ marginTop: 24, animation: "fadeUp 0.7s 0.3s ease-out both" }}>
+            <h2 className="title">Operación y Disponibilidad</h2>
+            <div className="actions" style={{ marginBottom: 20 }}>
+              <button className="accent" onClick={() => setAvailability(true)}>Ponerse Online</button>
               <button className="secondary" onClick={() => setAvailability(false)}>Desconectarse</button>
             </div>
-            
-            <div style={{ marginTop: '20px', background: 'rgba(0,168,255,0.05)', padding: '15px', borderRadius: '16px' }}>
-              <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#004e92', marginBottom: '10px' }}>Ubicación Actual</p>
-              <div className="row">
+
+            <div style={{
+              background: "rgba(79,195,247,0.08)",
+              padding: 16,
+              borderRadius: 16,
+              border: "1px solid rgba(79,195,247,0.15)"
+            }}>
+              <p className="small" style={{ fontWeight: 700, color: "#4fc3f7", marginBottom: 10 }}>
+                📍 Ubicación Actual
+              </p>
+              <div className="row" style={{ marginBottom: 12 }}>
                 <input type="number" step="0.000001" value={lat} onChange={(e) => setLat(Number(e.target.value))} />
                 <input type="number" step="0.000001" value={lng} onChange={(e) => setLng(Number(e.target.value))} />
               </div>
-              <button style={{ marginTop: 10 }} onClick={scanNearby}>Escanear Viajes Cercanos</button>
+              <button onClick={scanNearby}>Escanear Viajes Cercanos</button>
             </div>
           </section>
         </div>
       </div>
 
-      <section className="glass panel" style={{ marginTop: 24, animationDelay: "0.4s" }}>
-        <h2 className="title" style={{ color: '#004e92' }}>Panel de Viajes Disponibles</h2>
-        <div className="grid">
-          {(nearby.nearby || []).length > 0 ? (
-            nearby.nearby?.map((item) => (
-              <div className="glass panel" key={item.ride.id} style={{ background: 'white', border: '1px solid #00a8ff' }}>
-                <p style={{ fontWeight: 'bold', color: '#004e92' }}>Viaje: {item.ride.id.substring(0,8)}</p>
-                <p style={{ fontSize: '14px' }}>Distancia: {item.distanceKm.toFixed(2)} km</p>
-                <p style={{ fontSize: '18px', fontWeight: 'bold', color: '#32ff7e' }}>CLP {item.ride.fareEstimate}</p>
-                <button style={{ marginTop: 10, padding: '10px' }} onClick={() => acceptRide(item.ride.id)}>Aceptar</button>
+      {/* Nearby Rides Panel */}
+      <section className="glass panel" style={{ marginTop: 24, animation: "fadeUp 0.7s 0.4s ease-out both" }}>
+        <h2 className="title">Viajes Disponibles</h2>
+        {(nearby.nearby || []).length > 0 ? (
+          <div className="grid">
+            {nearby.nearby?.map((item) => (
+              <div key={item.ride.id} style={{
+                padding: 20,
+                borderRadius: 18,
+                background: "rgba(79,195,247,0.08)",
+                border: "1px solid rgba(79,195,247,0.2)",
+                transition: "all 0.3s ease"
+              }}>
+                <p className="small">ID: {item.ride.id.substring(0, 8)}...</p>
+                <p style={{ fontSize: 14, margin: "8px 0", color: "rgba(255,255,255,0.7)" }}>
+                  Distancia: <b style={{ color: "#4fc3f7" }}>{item.distanceKm.toFixed(2)} km</b>
+                </p>
+                <p style={{ fontSize: 22, fontWeight: 800, fontFamily: "Outfit, sans-serif", color: "#69f0ae" }}>
+                  CLP ${item.ride.fareEstimate.toLocaleString()}
+                </p>
+                <button className="accent" style={{ marginTop: 12 }} onClick={() => acceptRide(item.ride.id)}>
+                  Aceptar Viaje
+                </button>
               </div>
-            ))
-          ) : (
-            <p style={{ color: '#4a5a6a', textAlign: 'center', gridColumn: '1/-1', padding: '20px' }}>No hay viajes cercanos disponibles en este momento.</p>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <p style={{ color: "rgba(255,255,255,0.4)", textAlign: "center", padding: 30 }}>
+            No hay viajes cercanos disponibles en este momento.
+          </p>
+        )}
       </section>
 
-      <section className="glass panel" style={{ marginTop: 24, animationDelay: "0.5s" }}>
-        <h2 className="title" style={{ color: '#004e92' }}>Control de Viaje Activo</h2>
-        <p className="small" style={{ marginBottom: '15px' }}>ID: {selectedRide || "Ninguno seleccionado"}</p>
-        <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))' }}>
+      {/* Active Ride Control */}
+      <section className="glass panel" style={{ marginTop: 24, animation: "fadeUp 0.7s 0.5s ease-out both" }}>
+        <h2 className="title">Control de Viaje Activo</h2>
+        <p className="small" style={{ marginBottom: 16 }}>
+          ID: <span style={{ color: selectedRide ? "#4fc3f7" : "rgba(255,255,255,0.3)" }}>
+            {selectedRide ? selectedRide.substring(0, 12) + "..." : "Ninguno seleccionado"}
+          </span>
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12 }}>
           <button onClick={() => patchStatus("ARRIVED")}>Llegué</button>
           <button onClick={() => patchStatus("IN_PROGRESS")}>Iniciar</button>
-          <button onClick={() => patchStatus("COMPLETED")} style={{ background: 'var(--accent)', color: '#004e92' }}>Completar</button>
+          <button className="accent" onClick={() => patchStatus("COMPLETED")}>Completar</button>
           <button className="secondary" onClick={() => patchStatus("CANCELLED")}>Cancelar</button>
         </div>
       </section>
 
-      <section className="glass panel" style={{ marginTop: 24, animationDelay: "0.6s" }}>
-        <h2 className="title" style={{ color: '#004e92' }}>Logs de Operación</h2>
+      {/* System Logs */}
+      <section className="glass panel" style={{ marginTop: 24, animation: "fadeUp 0.7s 0.6s ease-out both" }}>
+        <h2 className="title">Logs de Operación</h2>
         <pre>{result}</pre>
       </section>
-
-      <style jsx>{`
-        .flex-col { display: flex; flex-direction: column; }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .panel { animation: fadeIn 0.6s ease-out both; }
-      `}</style>
     </main>
   );
 }
