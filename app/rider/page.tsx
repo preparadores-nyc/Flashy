@@ -50,7 +50,7 @@ export default function RiderPage() {
     dropoffLat: -33.4372,
     dropoffLng: -70.6506
   });
-  const [result, setResult] = useState("Sin acciones todavia.");
+  const [result, setResult] = useState("Sin acciones todavía.");
 
   async function registerRider(event: FormEvent) {
     event.preventDefault();
@@ -118,152 +118,164 @@ export default function RiderPage() {
       </div>
 
       <section className="hero">
-        <span className="pill">Portal Pasajeros</span>
-        <h1 className="brand">Onboarding Rider · Flashy</h1>
-        <p className="subtitle">Registro completo con datos operativos estilo app de movilidad premium.</p>
+        <span className="pill">Experiencia Pasajero</span>
+        <h1 className="brand">Viaja con Estilo · Flashy</h1>
+        <p className="subtitle">Tu movilidad en Santiago, rediseñada para ser más elegante, rápida y segura.</p>
       </section>
 
-      <section className="glass panel">
-        <h2 className="title">1) Registro pasajero</h2>
-        <form onSubmit={registerRider}>
-          <div className="row">
-            <input
-              placeholder="Nombre"
-              value={registration.firstName}
-              onChange={(e) => setRegistration((p) => ({ ...p, firstName: e.target.value }))}
-            />
-            <input
-              placeholder="Apellido"
-              value={registration.lastName}
-              onChange={(e) => setRegistration((p) => ({ ...p, lastName: e.target.value }))}
-            />
-          </div>
-          <div className="row" style={{ marginTop: 10 }}>
-            <input
-              placeholder="Email"
-              value={registration.email}
-              onChange={(e) => setRegistration((p) => ({ ...p, email: e.target.value }))}
-            />
-            <input
-              placeholder="Contrasena"
-              type="password"
-              value={registration.password}
-              onChange={(e) => setRegistration((p) => ({ ...p, password: e.target.value }))}
-            />
-          </div>
-          <div className="triple" style={{ marginTop: 10 }}>
-            <input
-              placeholder="Codigo pais"
-              value={registration.countryCode}
-              onChange={(e) => setRegistration((p) => ({ ...p, countryCode: e.target.value }))}
-            />
-            <input
-              placeholder="Telefono"
-              value={registration.phone}
-              onChange={(e) => setRegistration((p) => ({ ...p, phone: e.target.value }))}
-            />
-            <input
-              placeholder="Rut / ID"
-              value={registration.nationalId}
-              onChange={(e) => setRegistration((p) => ({ ...p, nationalId: e.target.value }))}
-            />
-          </div>
-          <div className="row" style={{ marginTop: 10 }}>
-            <input
-              type="date"
-              value={registration.dateOfBirth}
-              onChange={(e) => setRegistration((p) => ({ ...p, dateOfBirth: e.target.value }))}
-            />
-            <input
-              placeholder="Direccion"
-              value={registration.addressLine1}
-              onChange={(e) => setRegistration((p) => ({ ...p, addressLine1: e.target.value }))}
-            />
-          </div>
-          <div className="triple" style={{ marginTop: 10 }}>
-            <input
-              placeholder="Comuna"
-              value={registration.commune}
-              onChange={(e) => setRegistration((p) => ({ ...p, commune: e.target.value }))}
-            />
-            <input
-              placeholder="Ciudad"
-              value={registration.city}
-              onChange={(e) => setRegistration((p) => ({ ...p, city: e.target.value }))}
-            />
-            <input
-              placeholder="Contacto emergencia"
-              value={registration.emergencyName}
-              onChange={(e) => setRegistration((p) => ({ ...p, emergencyName: e.target.value }))}
-            />
-          </div>
-          <input
-            style={{ marginTop: 10 }}
-            placeholder="Telefono emergencia"
-            value={registration.emergencyPhone}
-            onChange={(e) => setRegistration((p) => ({ ...p, emergencyPhone: e.target.value }))}
-          />
-          <button style={{ marginTop: 10 }} type="submit">Crear cuenta pasajero</button>
-        </form>
-      </section>
+      <div className="grid">
+        <section className="glass panel" style={{ animationDelay: "0.1s" }}>
+          <h2 className="title" style={{ color: '#004e92', marginBottom: '20px', fontSize: '1.2rem' }}>1) Registro de Pasajero</h2>
+          <form onSubmit={registerRider}>
+            <div className="row">
+              <div style={{ marginBottom: '10px' }}>
+                <label style={{ fontSize: '12px', color: '#4a5a6a', marginLeft: '5px' }}>Nombre</label>
+                <input
+                  placeholder="Ej: Juan"
+                  value={registration.firstName}
+                  onChange={(e) => setRegistration((p) => ({ ...p, firstName: e.target.value }))}
+                />
+              </div>
+              <div style={{ marginBottom: '10px' }}>
+                <label style={{ fontSize: '12px', color: '#4a5a6a', marginLeft: '5px' }}>Apellido</label>
+                <input
+                  placeholder="Ej: Pérez"
+                  value={registration.lastName}
+                  onChange={(e) => setRegistration((p) => ({ ...p, lastName: e.target.value }))}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div style={{ marginBottom: '10px' }}>
+                <label style={{ fontSize: '12px', color: '#4a5a6a', marginLeft: '5px' }}>Email Corporativo</label>
+                <input
+                  placeholder="juan@ejemplo.cl"
+                  value={registration.email}
+                  onChange={(e) => setRegistration((p) => ({ ...p, email: e.target.value }))}
+                />
+              </div>
+              <div style={{ marginBottom: '10px' }}>
+                <label style={{ fontSize: '12px', color: '#4a5a6a', marginLeft: '5px' }}>Contraseña</label>
+                <input
+                  placeholder="••••••••"
+                  type="password"
+                  value={registration.password}
+                  onChange={(e) => setRegistration((p) => ({ ...p, password: e.target.value }))}
+                />
+              </div>
+            </div>
+            <div className="triple">
+              <input
+                placeholder="+56"
+                value={registration.countryCode}
+                onChange={(e) => setRegistration((p) => ({ ...p, countryCode: e.target.value }))}
+              />
+              <input
+                placeholder="Teléfono"
+                value={registration.phone}
+                onChange={(e) => setRegistration((p) => ({ ...p, phone: e.target.value }))}
+              />
+              <input
+                placeholder="RUT / ID"
+                value={registration.nationalId}
+                onChange={(e) => setRegistration((p) => ({ ...p, nationalId: e.target.value }))}
+              />
+            </div>
+            <div className="row" style={{ marginTop: 10 }}>
+              <input
+                type="date"
+                value={registration.dateOfBirth}
+                onChange={(e) => setRegistration((p) => ({ ...p, dateOfBirth: e.target.value }))}
+              />
+              <input
+                placeholder="Dirección Residencial"
+                value={registration.addressLine1}
+                onChange={(e) => setRegistration((p) => ({ ...p, addressLine1: e.target.value }))}
+              />
+            </div>
+            <button style={{ marginTop: 20 }} type="submit">Crear Cuenta Premium</button>
+          </form>
+        </section>
 
-      <section className="glass panel">
-        <h2 className="title">2) Login pasajero</h2>
-        <div className="row">
-          <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <input
-            placeholder="Contrasena"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <div className="flex-col">
+          <section className="glass panel" style={{ animationDelay: "0.2s" }}>
+            <h2 className="title" style={{ color: '#004e92', marginBottom: '20px' }}>2) Acceso Rápido</h2>
+            <div className="row">
+              <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <input
+                placeholder="Contraseña"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="actions" style={{ marginTop: 20 }}>
+              <button onClick={login}>Iniciar Sesión</button>
+              <button className="secondary" onClick={history}>Historial de Viajes</button>
+            </div>
+            <div style={{ marginTop: '15px', textAlign: 'center' }}>
+              <span className={`pill ${token ? '' : 'secondary'}`} style={{ fontSize: '10px', background: token ? '' : '#eee', color: token ? '' : '#999' }}>
+                {token ? "✓ Sesión Activa" : "○ Sin Sesión"}
+              </span>
+            </div>
+          </section>
+
+          <section className="glass panel" style={{ animationDelay: "0.3s", marginTop: '20px' }}>
+            <h2 className="title" style={{ color: '#004e92', marginBottom: '20px' }}>3) Solicitar Flashy</h2>
+            <form onSubmit={requestRide}>
+              <div style={{ background: 'rgba(0,168,255,0.05)', padding: '15px', borderRadius: '16px', marginBottom: '15px' }}>
+                <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#004e92', marginBottom: '10px' }}>Punto de Recogida</p>
+                <div className="row">
+                  <input
+                    type="number"
+                    step="0.000001"
+                    value={payload.pickupLat}
+                    onChange={(e) => setPayload((p) => ({ ...p, pickupLat: Number(e.target.value) }))}
+                  />
+                  <input
+                    type="number"
+                    step="0.000001"
+                    value={payload.pickupLng}
+                    onChange={(e) => setPayload((p) => ({ ...p, pickupLng: Number(e.target.value) }))}
+                  />
+                </div>
+              </div>
+              <div style={{ background: 'rgba(50,255,126,0.05)', padding: '15px', borderRadius: '16px', marginBottom: '15px' }}>
+                <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#004e92', marginBottom: '10px' }}>Destino Final</p>
+                <div className="row">
+                  <input
+                    type="number"
+                    step="0.000001"
+                    value={payload.dropoffLat}
+                    onChange={(e) => setPayload((p) => ({ ...p, dropoffLat: Number(e.target.value) }))}
+                  />
+                  <input
+                    type="number"
+                    step="0.000001"
+                    value={payload.dropoffLng}
+                    onChange={(e) => setPayload((p) => ({ ...p, dropoffLng: Number(e.target.value) }))}
+                  />
+                </div>
+              </div>
+              <button type="submit" style={{ background: 'linear-gradient(135deg, #32ff7e, #00d2ff)', color: '#004e92' }}>Solicitar Ahora</button>
+            </form>
+          </section>
         </div>
-        <div className="actions" style={{ marginTop: 10 }}>
-          <button onClick={login}>Entrar</button>
-          <button className="secondary" onClick={history}>Ver historial</button>
-        </div>
-        <p className="small">Sesion JWT: {token ? "activa" : "sin sesion"}</p>
-      </section>
+      </div>
 
-      <section className="glass panel">
-        <h2 className="title">3) Solicitar viaje</h2>
-        <form onSubmit={requestRide}>
-          <div className="row">
-            <input
-              type="number"
-              step="0.000001"
-              value={payload.pickupLat}
-              onChange={(e) => setPayload((p) => ({ ...p, pickupLat: Number(e.target.value) }))}
-            />
-            <input
-              type="number"
-              step="0.000001"
-              value={payload.pickupLng}
-              onChange={(e) => setPayload((p) => ({ ...p, pickupLng: Number(e.target.value) }))}
-            />
-          </div>
-          <div className="row" style={{ marginTop: 10 }}>
-            <input
-              type="number"
-              step="0.000001"
-              value={payload.dropoffLat}
-              onChange={(e) => setPayload((p) => ({ ...p, dropoffLat: Number(e.target.value) }))}
-            />
-            <input
-              type="number"
-              step="0.000001"
-              value={payload.dropoffLng}
-              onChange={(e) => setPayload((p) => ({ ...p, dropoffLng: Number(e.target.value) }))}
-            />
-          </div>
-          <button style={{ marginTop: 10 }} type="submit">Pedir Flashy</button>
-        </form>
-      </section>
-
-      <section className="glass panel">
-        <h2 className="title">4) Resultado API</h2>
+      <section className="glass panel" style={{ marginTop: 24, animationDelay: "0.4s" }}>
+        <h2 className="title" style={{ color: '#004e92' }}>Estado del Sistema</h2>
         <pre>{result}</pre>
       </section>
+
+      <style jsx>{`
+        .flex-col { display: flex; flex-direction: column; }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .panel { animation: fadeIn 0.6s ease-out both; }
+      `}</style>
     </main>
   );
 }

@@ -57,7 +57,7 @@ export default function DriverPage() {
   const [lng, setLng] = useState(-70.6693);
   const [selectedRide, setSelectedRide] = useState("");
   const [nearby, setNearby] = useState<NearbyResponse>({});
-  const [result, setResult] = useState("Sin acciones todavia.");
+  const [result, setResult] = useState("Sin acciones todavía.");
 
   async function registerDriver() {
     const response = await fetch("/api/auth/register", {
@@ -154,187 +154,153 @@ export default function DriverPage() {
       </div>
 
       <section className="hero">
-        <span className="pill">Portal Conductores</span>
-        <h1 className="brand">Onboarding Driver · Flashy</h1>
-        <p className="subtitle">Registro completo de conductor, vehiculo y documentacion operativa.</p>
+        <span className="pill">Portal de Socios</span>
+        <h1 className="brand">Conduce el Futuro · Flashy</h1>
+        <p className="subtitle">Gestión operativa premium para conductores profesionales en Santiago.</p>
       </section>
 
-      <section className="glass panel">
-        <h2 className="title">1) Registro conductor</h2>
-        <div className="row">
-          <input
-            placeholder="Nombre"
-            value={registration.firstName}
-            onChange={(e) => setRegistration((p) => ({ ...p, firstName: e.target.value }))}
-          />
-          <input
-            placeholder="Apellido"
-            value={registration.lastName}
-            onChange={(e) => setRegistration((p) => ({ ...p, lastName: e.target.value }))}
-          />
-        </div>
-        <div className="row" style={{ marginTop: 10 }}>
-          <input
-            placeholder="Email"
-            value={registration.email}
-            onChange={(e) => setRegistration((p) => ({ ...p, email: e.target.value }))}
-          />
-          <input
-            type="password"
-            placeholder="Contrasena"
-            value={registration.password}
-            onChange={(e) => setRegistration((p) => ({ ...p, password: e.target.value }))}
-          />
-        </div>
-        <div className="triple" style={{ marginTop: 10 }}>
-          <input
-            placeholder="Codigo pais"
-            value={registration.countryCode}
-            onChange={(e) => setRegistration((p) => ({ ...p, countryCode: e.target.value }))}
-          />
-          <input
-            placeholder="Telefono"
-            value={registration.phone}
-            onChange={(e) => setRegistration((p) => ({ ...p, phone: e.target.value }))}
-          />
-          <input
-            placeholder="Rut / ID"
-            value={registration.nationalId}
-            onChange={(e) => setRegistration((p) => ({ ...p, nationalId: e.target.value }))}
-          />
-        </div>
-        <div className="row" style={{ marginTop: 10 }}>
-          <input
-            type="date"
-            value={registration.dateOfBirth}
-            onChange={(e) => setRegistration((p) => ({ ...p, dateOfBirth: e.target.value }))}
-          />
-          <input
-            placeholder="Direccion"
-            value={registration.addressLine1}
-            onChange={(e) => setRegistration((p) => ({ ...p, addressLine1: e.target.value }))}
-          />
-        </div>
-        <div className="triple" style={{ marginTop: 10 }}>
-          <input
-            placeholder="Comuna"
-            value={registration.commune}
-            onChange={(e) => setRegistration((p) => ({ ...p, commune: e.target.value }))}
-          />
-          <input
-            placeholder="Ciudad"
-            value={registration.city}
-            onChange={(e) => setRegistration((p) => ({ ...p, city: e.target.value }))}
-          />
-          <input
-            placeholder="Licencia"
-            value={registration.licenseNumber}
-            onChange={(e) => setRegistration((p) => ({ ...p, licenseNumber: e.target.value }))}
-          />
-        </div>
-        <div className="row" style={{ marginTop: 10 }}>
-          <input
-            type="date"
-            value={registration.licenseExpiry}
-            onChange={(e) => setRegistration((p) => ({ ...p, licenseExpiry: e.target.value }))}
-          />
-          <input
-            placeholder="Poliza seguro"
-            value={registration.insurancePolicy}
-            onChange={(e) => setRegistration((p) => ({ ...p, insurancePolicy: e.target.value }))}
-          />
-        </div>
-        <div className="triple" style={{ marginTop: 10 }}>
-          <input
-            placeholder="Marca"
-            value={registration.vehicleMake}
-            onChange={(e) => setRegistration((p) => ({ ...p, vehicleMake: e.target.value }))}
-          />
-          <input
-            placeholder="Modelo"
-            value={registration.vehicleModel}
-            onChange={(e) => setRegistration((p) => ({ ...p, vehicleModel: e.target.value }))}
-          />
-          <input
-            type="number"
-            placeholder="Ano"
-            value={registration.vehicleYear}
-            onChange={(e) => setRegistration((p) => ({ ...p, vehicleYear: Number(e.target.value) }))}
-          />
-        </div>
-        <div className="row" style={{ marginTop: 10 }}>
-          <input
-            placeholder="Color"
-            value={registration.vehicleColor}
-            onChange={(e) => setRegistration((p) => ({ ...p, vehicleColor: e.target.value }))}
-          />
-          <input
-            placeholder="Patente"
-            value={registration.vehiclePlate}
-            onChange={(e) => setRegistration((p) => ({ ...p, vehiclePlate: e.target.value }))}
-          />
-        </div>
-        <button style={{ marginTop: 10 }} onClick={registerDriver}>Crear cuenta conductor</button>
-      </section>
-
-      <section className="glass panel">
-        <h2 className="title">2) Login conductor</h2>
-        <div className="row">
-          <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <input
-            placeholder="Contrasena"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="actions" style={{ marginTop: 10 }}>
-          <button onClick={login}>Entrar</button>
-        </div>
-        <p className="small">Sesion JWT: {token ? "activa" : "sin sesion"}</p>
-      </section>
-
-      <section className="glass panel">
-        <h2 className="title">3) Disponibilidad</h2>
-        <div className="actions">
-          <button onClick={() => setAvailability(true)}>Online</button>
-          <button className="secondary" onClick={() => setAvailability(false)}>Offline</button>
-        </div>
-      </section>
-
-      <section className="glass panel">
-        <h2 className="title">4) Buscar viajes cercanos</h2>
-        <div className="row">
-          <input type="number" step="0.000001" value={lat} onChange={(e) => setLat(Number(e.target.value))} />
-          <input type="number" step="0.000001" value={lng} onChange={(e) => setLng(Number(e.target.value))} />
-        </div>
-        <button style={{ marginTop: 10 }} onClick={scanNearby}>Buscar</button>
-
-        {(nearby.nearby || []).map((item) => (
-          <div className="glass panel" key={item.ride.id} style={{ marginTop: 10 }}>
-            <p>
-              Ride: {item.ride.id} | {item.distanceKm.toFixed(2)} km | CLP {item.ride.fareEstimate}
-            </p>
-            <button onClick={() => acceptRide(item.ride.id)}>Aceptar viaje</button>
+      <div className="grid">
+        <section className="glass panel" style={{ animationDelay: "0.1s" }}>
+          <h2 className="title" style={{ color: '#004e92', marginBottom: '20px' }}>1) Registro Profesional</h2>
+          <div className="row">
+            <input
+              placeholder="Nombre"
+              value={registration.firstName}
+              onChange={(e) => setRegistration((p) => ({ ...p, firstName: e.target.value }))}
+            />
+            <input
+              placeholder="Apellido"
+              value={registration.lastName}
+              onChange={(e) => setRegistration((p) => ({ ...p, lastName: e.target.value }))}
+            />
           </div>
-        ))}
+          <div className="row" style={{ marginTop: 10 }}>
+            <input
+              placeholder="Email Corporativo"
+              value={registration.email}
+              onChange={(e) => setRegistration((p) => ({ ...p, email: e.target.value }))}
+            />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              value={registration.password}
+              onChange={(e) => setRegistration((p) => ({ ...p, password: e.target.value }))}
+            />
+          </div>
+          
+          <div style={{ marginTop: '20px', borderTop: '1px solid rgba(0,78,146,0.1)', paddingTop: '20px' }}>
+            <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#004e92', marginBottom: '10px' }}>Datos del Vehículo</p>
+            <div className="triple">
+              <input
+                placeholder="Marca"
+                value={registration.vehicleMake}
+                onChange={(e) => setRegistration((p) => ({ ...p, vehicleMake: e.target.value }))}
+              />
+              <input
+                placeholder="Modelo"
+                value={registration.vehicleModel}
+                onChange={(e) => setRegistration((p) => ({ ...p, vehicleModel: e.target.value }))}
+              />
+              <input
+                type="number"
+                placeholder="Año"
+                value={registration.vehicleYear}
+                onChange={(e) => setRegistration((p) => ({ ...p, vehicleYear: Number(e.target.value) }))}
+              />
+            </div>
+            <div className="row" style={{ marginTop: 10 }}>
+              <input
+                placeholder="Patente"
+                value={registration.vehiclePlate}
+                onChange={(e) => setRegistration((p) => ({ ...p, vehiclePlate: e.target.value }))}
+              />
+              <input
+                placeholder="Color"
+                value={registration.vehicleColor}
+                onChange={(e) => setRegistration((p) => ({ ...p, vehicleColor: e.target.value }))}
+              />
+            </div>
+          </div>
+          
+          <button style={{ marginTop: 20 }} onClick={registerDriver}>Activar Cuenta Socio</button>
+        </section>
+
+        <div className="flex-col">
+          <section className="glass panel" style={{ animationDelay: "0.2s" }}>
+            <h2 className="title" style={{ color: '#004e92', marginBottom: '20px' }}>2) Acceso Socio</h2>
+            <div className="row">
+              <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <input
+                placeholder="Contraseña"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button style={{ marginTop: 20 }} onClick={login}>Entrar al Portal</button>
+          </section>
+
+          <section className="glass panel" style={{ animationDelay: "0.3s", marginTop: '20px' }}>
+            <h2 className="title" style={{ color: '#004e92', marginBottom: '20px' }}>3) Operación y Disponibilidad</h2>
+            <div className="actions">
+              <button onClick={() => setAvailability(true)} style={{ background: 'linear-gradient(135deg, #32ff7e, #00d2ff)', color: '#004e92' }}>Ponerse Online</button>
+              <button className="secondary" onClick={() => setAvailability(false)}>Desconectarse</button>
+            </div>
+            
+            <div style={{ marginTop: '20px', background: 'rgba(0,168,255,0.05)', padding: '15px', borderRadius: '16px' }}>
+              <p style={{ fontSize: '12px', fontWeight: 'bold', color: '#004e92', marginBottom: '10px' }}>Ubicación Actual</p>
+              <div className="row">
+                <input type="number" step="0.000001" value={lat} onChange={(e) => setLat(Number(e.target.value))} />
+                <input type="number" step="0.000001" value={lng} onChange={(e) => setLng(Number(e.target.value))} />
+              </div>
+              <button style={{ marginTop: 10 }} onClick={scanNearby}>Escanear Viajes Cercanos</button>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <section className="glass panel" style={{ marginTop: 24, animationDelay: "0.4s" }}>
+        <h2 className="title" style={{ color: '#004e92' }}>Panel de Viajes Disponibles</h2>
+        <div className="grid">
+          {(nearby.nearby || []).length > 0 ? (
+            nearby.nearby?.map((item) => (
+              <div className="glass panel" key={item.ride.id} style={{ background: 'white', border: '1px solid #00a8ff' }}>
+                <p style={{ fontWeight: 'bold', color: '#004e92' }}>Viaje: {item.ride.id.substring(0,8)}</p>
+                <p style={{ fontSize: '14px' }}>Distancia: {item.distanceKm.toFixed(2)} km</p>
+                <p style={{ fontSize: '18px', fontWeight: 'bold', color: '#32ff7e' }}>CLP {item.ride.fareEstimate}</p>
+                <button style={{ marginTop: 10, padding: '10px' }} onClick={() => acceptRide(item.ride.id)}>Aceptar</button>
+              </div>
+            ))
+          ) : (
+            <p style={{ color: '#4a5a6a', textAlign: 'center', gridColumn: '1/-1', padding: '20px' }}>No hay viajes cercanos disponibles en este momento.</p>
+          )}
+        </div>
       </section>
 
-      <section className="glass panel">
-        <h2 className="title">5) Estado del viaje activo</h2>
-        <p className="small">Ride seleccionado: {selectedRide || "ninguno"}</p>
-        <div className="grid">
-          <button onClick={() => patchStatus("ARRIVED")}>Llegue</button>
+      <section className="glass panel" style={{ marginTop: 24, animationDelay: "0.5s" }}>
+        <h2 className="title" style={{ color: '#004e92' }}>Control de Viaje Activo</h2>
+        <p className="small" style={{ marginBottom: '15px' }}>ID: {selectedRide || "Ninguno seleccionado"}</p>
+        <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))' }}>
+          <button onClick={() => patchStatus("ARRIVED")}>Llegué</button>
           <button onClick={() => patchStatus("IN_PROGRESS")}>Iniciar</button>
-          <button onClick={() => patchStatus("COMPLETED")}>Completar</button>
+          <button onClick={() => patchStatus("COMPLETED")} style={{ background: 'var(--accent)', color: '#004e92' }}>Completar</button>
           <button className="secondary" onClick={() => patchStatus("CANCELLED")}>Cancelar</button>
         </div>
       </section>
 
-      <section className="glass panel">
-        <h2 className="title">6) Resultado API</h2>
+      <section className="glass panel" style={{ marginTop: 24, animationDelay: "0.6s" }}>
+        <h2 className="title" style={{ color: '#004e92' }}>Logs de Operación</h2>
         <pre>{result}</pre>
       </section>
+
+      <style jsx>{`
+        .flex-col { display: flex; flex-direction: column; }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .panel { animation: fadeIn 0.6s ease-out both; }
+      `}</style>
     </main>
   );
 }

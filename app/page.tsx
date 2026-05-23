@@ -9,49 +9,66 @@ export default function HomePage() {
 
       <section className="hero">
         <span className="pill">Santiago de Chile · Live Mobility</span>
-        <h1 className="brand">Flashy Mobility Platform</h1>
+        <h1 className="brand">Flashy Mobility</h1>
         <p className="subtitle">
-          Plataforma estilo Uber para comenzar a operar de inmediato: onboarding completo,
-          despacho, estados de viaje y experiencia visual premium para pasajeros y conductores.
+          La plataforma de movilidad premium que redefine el transporte en Santiago. 
+          Elegancia, seguridad y eficiencia en cada trayecto.
         </p>
       </section>
 
       <div className="grid">
-        <a className="glass card-link" href="/rider">
+        <a className="glass card-link" href="/rider" style={{ animationDelay: "0.2s" }}>
+          <div className="icon-box" style={{ fontSize: '40px', marginBottom: '15px' }}>👤</div>
           <h2>Portal Pasajeros</h2>
-          <p>Registro completo, solicitud de viajes, historial y seguimiento operativo.</p>
+          <p>Solicita tu Flashy con un toque. Experiencia de viaje premium con seguimiento en tiempo real.</p>
+          <div className="btn-fake" style={{ marginTop: '20px', fontWeight: 'bold', color: '#00a8ff' }}>Ingresar →</div>
         </a>
-        <a className="glass card-link" href="/driver">
+        <a className="glass card-link" href="/driver" style={{ animationDelay: "0.4s" }}>
+          <div className="icon-box" style={{ fontSize: '40px', marginBottom: '15px' }}>🚗</div>
           <h2>Portal Conductores</h2>
-          <p>Registro completo, validación de vehículo, disponibilidad y gestión del viaje.</p>
+          <p>Únete a nuestra flota de socios. Gestiona tus viajes, disponibilidad y ganancias con elegancia.</p>
+          <div className="btn-fake" style={{ marginTop: '20px', fontWeight: 'bold', color: '#00a8ff' }}>Ingresar →</div>
         </a>
       </div>
 
-      <section className="grid" style={{ marginTop: 14 }}>
-        <article className="glass panel metric">
-          <span className="small">Cobertura</span>
-          <b>Solo Santiago</b>
-          <span className="small">Geocerca activa en backend para pickup y dropoff</span>
+      <section className="grid" style={{ marginTop: 40 }}>
+        <article className="glass panel metric" style={{ animationDelay: "0.6s" }}>
+          <div style={{ fontSize: '24px', marginBottom: '10px' }}>📍</div>
+          <span className="small">Cobertura Total</span>
+          <b>Santiago RM</b>
+          <p className="small">Geocerca inteligente activa para máxima precisión.</p>
         </article>
-        <article className="glass panel metric">
-          <span className="small">Onboarding</span>
-          <b>Datos Reales</b>
-          <span className="small">Captura de identidad, contacto y perfil operativo</span>
+        <article className="glass panel metric" style={{ animationDelay: "0.7s" }}>
+          <div style={{ fontSize: '24px', marginBottom: '10px' }}>🛡️</div>
+          <span className="small">Seguridad</span>
+          <b>Verificación Real</b>
+          <p className="small">Onboarding completo de identidad y documentación.</p>
         </article>
-        <article className="glass panel metric">
-          <span className="small">Flujo</span>
-          <b>End-to-end</b>
-          <span className="small">REQUESTED → ACCEPTED → ARRIVED → IN_PROGRESS → COMPLETED</span>
+        <article className="glass panel metric" style={{ animationDelay: "0.8s" }}>
+          <div style={{ fontSize: '24px', marginBottom: '10px' }}>⚡</div>
+          <span className="small">Eficiencia</span>
+          <b>Flujo Ágil</b>
+          <p className="small">Desde la solicitud hasta el destino en tiempo récord.</p>
         </article>
       </section>
 
-      <section className="glass panel">
-        <h3 className="title">Listo para operar desde hoy</h3>
-        <p className="small">
-          Para producción inmediata, conecta una base Postgres cloud en DATABASE_URL y define
-          JWT_SECRET en Vercel. El frontend y la API ya están preparados para uso operativo.
+      <section className="glass panel" style={{ marginTop: 40, textAlign: 'center', animationDelay: "0.9s" }}>
+        <h3 className="title" style={{ color: '#004e92', fontSize: '1.5rem' }}>Operación Inteligente</h3>
+        <p style={{ color: '#4a5a6a', maxWidth: '600px', margin: '10px auto' }}>
+          Flashy combina la estética Frutiger Aero con una infraestructura corporativa robusta, 
+          ofreciendo una experiencia visual refrescante sin comprometer la fiabilidad técnica.
         </p>
       </section>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .card-link, .panel { animation: fadeIn 0.8s ease-out both; }
+        .icon-box { transition: transform 0.3s ease; }
+        .card-link:hover .icon-box { transform: scale(1.2) rotate(5deg); }
+      `}</style>
     </main>
   );
 }
