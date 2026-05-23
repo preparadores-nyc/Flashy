@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: flashy-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: flashy
+    ports:
+      - "5432:5432"
+    volumes:
+      - flashy_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  flashy_postgres_data:
