@@ -7,19 +7,16 @@ const schema = z.object({
   status: z.enum(["ARRIVED", "IN_PROGRESS", "COMPLETED", "CANCELLED"])
 });
 
-type Params = {
-  params: {
-    rideId: string;
-  };
-};
-
 const transitions: Record<string, string[]> = {
   ACCEPTED: ["ARRIVED", "CANCELLED"],
   ARRIVED: ["IN_PROGRESS", "CANCELLED"],
   IN_PROGRESS: ["COMPLETED", "CANCELLED"]
 };
 
-export async function PATCH(request: NextRequest, { params }: Params) {
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: Promise<{ rideId: string }> }
+) {
   try {
     const auth = getAuthFromRequest(request);
     if (auth.role !== "DRIVER") {
@@ -28,8 +25,9 @@ export async function PATCH(request: NextRequest, { params }: Params) {
 
     const body = await request.json();
     const parsed = schema.parse(body);
+    const { rideId } = await params;
 
-    const ride = await prisma.ride.findUnique({ where: { id: params.rideId } });
+    const ride = await prisma.ride.findUnique({ where: { id: rideId } });
     if (!ride) {
       return NextResponse.json({ error: "Ride not found" }, { status: 404 });
     }
@@ -44,7 +42,7 @@ export async function PATCH(request: NextRequest, { params }: Params) {
     }
 
     const updated = await prisma.ride.update({
-      where: { id: params.rideId },
+      where: { id: rideId },
       data: {
         status: parsed.status,
         startedAt: parsed.status === "IN_PROGRESS" ? new Date() : ride.startedAt,
