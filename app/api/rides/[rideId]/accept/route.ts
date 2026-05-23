@@ -2,20 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 import { getAuthFromRequest } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
-type Params = {
-  params: {
-    rideId: string;
-  };
-};
-
-export async function POST(request: NextRequest, { params }: Params) {
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ rideId: string }> }
+) {
   try {
     const auth = getAuthFromRequest(request);
     if (auth.role !== "DRIVER") {
       return NextResponse.json({ error: "Only drivers can accept rides" }, { status: 403 });
     }
 
-    const ride = await prisma.ride.findUnique({ where: { id: params.rideId } });
+    const { rideId } = await params;
+
+    const ride = await prisma.ride.findUnique({ where: { id: rideId } });
     if (!ride) {
       return NextResponse.json({ error: "Ride not found" }, { status: 404 });
     }
@@ -25,7 +24,7 @@ export async function POST(request: NextRequest, { params }: Params) {
     }
 
     const updated = await prisma.$transaction(async (tx) => {
-      const lockedRide = await tx.ride.findUnique({ where: { id: params.rideId } });
+      const lockedRide = await tx.ride.findUnique({ where: { id: rideId } });
       if (!lockedRide || lockedRide.status !== "REQUESTED") {
         throw new Error("Ride no longer available");
       }
@@ -36,7 +35,7 @@ export async function POST(request: NextRequest, { params }: Params) {
       });
 
       return tx.ride.update({
-        where: { id: params.rideId },
+        where: { id: rideId },
         data: {
           driverId: auth.userId,
           status: "ACCEPTED",
