@@ -11,28 +11,29 @@ export default function HomePage() {
         <span className="fx-orb c" />
         <span className="fx-ring" />
         <span className="fx-mesh" />
+        <span className="fx-beam" />
       </div>
 
       <section className="hero">
         <article className="glass hero-main">
-          <span className="pill">Santiago de Chile · Startup Mobility</span>
-          <h1 className="brand">Flashy for Modern Cities</h1>
+          <span className="pill">Santiago de Chile · Night Operations</span>
+          <h1 className="brand">Flashy Neon Mobility Grid</h1>
           <p className="subtitle">
-            Una experiencia de movilidad corporativa con energia visual, glass premium y una interfaz
-            moderna para operar pasajeros y conductores desde una sola plataforma.
+            Direccion visual nocturna con neones, movimiento constante y presencia corporativa para
+            operar pasajeros y conductores con estilo startup de alto impacto.
           </p>
           <div className="hero-cta-row">
-            <Link href="/rider" className="btn-link">Portal Pasajeros</Link>
-            <Link href="/driver" className="btn-link secondary">Portal Conductores</Link>
+            <Link href="/rider" className="btn-link">Activar Pasajeros</Link>
+            <Link href="/driver" className="btn-link secondary">Activar Conductores</Link>
           </div>
         </article>
 
         <aside className="glass hero-side">
-          <h2 className="title">Panel Ejecutivo</h2>
+          <h2 className="title">Pulse Command</h2>
           <div className="hero-kpi-list">
-            <p><span>Operacion</span><strong>24/7</strong></p>
-            <p><span>UX Performance</span><strong>Realtime</strong></p>
-            <p><span>Escalabilidad</span><strong>Cloud Native</strong></p>
+            <p><span>Operacion nocturna</span><strong>24/7</strong></p>
+            <p><span>Sync de estado</span><strong>Live</strong></p>
+            <p><span>Decision speed</span><strong>Fast Lane</strong></p>
           </div>
           <div className="mini-bars" aria-hidden="true">
             <span />
@@ -43,33 +44,65 @@ export default function HomePage() {
         </aside>
       </section>
 
+      <section className="glass pulse-strip" aria-label="Movimiento continuo">
+        <p>
+          Despacho inteligente en movimiento permanente · Señal activa · Matching dinamico ·
+          Tracking en tiempo real · Experiencia premium de punta a punta
+        </p>
+      </section>
+
       <section className="grid portals">
         <Link href="/rider" className="glass card-link">
-          <span className="chip">Customer Experience</span>
+          <span className="chip">Rider Flow</span>
           <h2>Portal Pasajeros</h2>
-          <p>Solicitudes de viaje en segundos, seguimiento en vivo y flujo claro de principio a fin.</p>
+          <p>Solicitudes en segundos, seguimiento en vivo y experiencia visual nocturna de nivel pro.</p>
           <span className="card-arrow">Entrar al portal</span>
         </Link>
 
         <Link href="/driver" className="glass card-link">
-          <span className="chip">Operations Core</span>
+          <span className="chip">Driver Core</span>
           <h2>Portal Conductores</h2>
-          <p>Control de disponibilidad, gestion del viaje y estados operativos con estilo profesional.</p>
+          <p>Control de disponibilidad, gestion del viaje y estados operativos con vista de comando.</p>
           <span className="card-arrow">Entrar al portal</span>
         </Link>
       </section>
 
+      <section className="glass motion-board">
+        <div className="motion-head">
+          <h3>Motion Analytics</h3>
+          <span className="small">Live graph stream · Last 60 min</span>
+        </div>
+        <div className="chart-grid">
+          <article className="glass chart-card">
+            <h4>Demanda por Zona</h4>
+            <svg viewBox="0 0 320 120" className="chart-svg" aria-label="Grafica demanda">
+              <path className="chart-track" d="M6 96 C50 90, 72 42, 116 56 C146 66, 180 30, 212 48 C246 68, 276 34, 314 40" />
+              <path className="chart-glow" d="M6 96 C50 90, 72 42, 116 56 C146 66, 180 30, 212 48 C246 68, 276 34, 314 40" />
+              <circle className="chart-dot" cx="314" cy="40" r="4" />
+            </svg>
+          </article>
+          <article className="glass chart-card">
+            <h4>Tiempo de Respuesta</h4>
+            <svg viewBox="0 0 320 120" className="chart-svg" aria-label="Grafica respuesta">
+              <path className="chart-track two" d="M6 44 C42 70, 82 24, 122 54 C154 74, 184 62, 214 78 C246 94, 278 70, 314 66" />
+              <path className="chart-glow two" d="M6 44 C42 70, 82 24, 122 54 C154 74, 184 62, 214 78 C246 94, 278 70, 314 66" />
+              <circle className="chart-dot two" cx="314" cy="66" r="4" />
+            </svg>
+          </article>
+        </div>
+      </section>
+
       <section className="glass spotlight">
         <div className="spotlight-copy">
-          <h3>Visual Brand Spotlight</h3>
+          <h3>Nocturnal Brand Spotlight</h3>
           <p>
-            Un lenguaje visual fresco y corporativo que combina glassmorphism, volumen 3D y
-            direccion startup para comunicar confianza e innovacion en cada pantalla.
+            La marca entra en modo neon: contraste alto, relieves brillantes y un look corporativo
+            moderno para presentar producto, tecnologia y crecimiento.
           </p>
           <div className="spot-tags" aria-hidden="true">
-            <span>Growth UX</span>
-            <span>Corporate Grade</span>
-            <span>Mobile Ready</span>
+            <span>Dark Mode Ops</span>
+            <span>Neon Startup</span>
+            <span>Motion First</span>
           </div>
         </div>
         <div className="spotlight-image-wrap">
@@ -84,27 +117,27 @@ export default function HomePage() {
 
       <div className="triple kpis">
         <div className="glass metric">
-          <span className="small">Cobertura</span>
+          <span className="small">Cobertura Activa</span>
           <b>Santiago RM</b>
-          <span className="small">Geocerca inteligente para pickup y dropoff confiable.</span>
+          <span className="small">Geocerca inteligente para pickup y dropoff en alta precision.</span>
         </div>
         <div className="glass metric">
-          <span className="small">Confianza</span>
+          <span className="small">Seguridad</span>
           <b>Verificacion Real</b>
-          <span className="small">Onboarding completo de identidad y documentacion.</span>
+          <span className="small">Onboarding completo y control de perfil operativo.</span>
         </div>
         <div className="glass metric">
-          <span className="small">Velocidad</span>
+          <span className="small">Ritmo</span>
           <b>Flujo Agil</b>
-          <span className="small">REQUESTED a COMPLETED en una experiencia continua.</span>
+          <span className="small">REQUESTED a COMPLETED con continuidad visual en tiempo real.</span>
         </div>
       </div>
 
       <section className="glass panel final-cta">
-        <h3>Diseno listo para escalar</h3>
+        <h3>Diseno nocturno listo para escalar</h3>
         <p>
-          UI moderna, elegante y profesional para impulsar conversion en desktop y movil sin tocar
-          la logica backend existente.
+          Interfaz dark con neones y animaciones de alto detalle para desktop y movil, sin tocar
+          backend ni logica de negocio existente.
         </p>
       </section>
     </main>
