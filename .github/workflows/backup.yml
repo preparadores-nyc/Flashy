@@ -1,0 +1,38 @@
+name: 🗂️ Backup Automático
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
+
+jobs:
+  backup:
+    name: Crear rama de backup
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Obtener fecha actual
+        id: fecha
+        run: echo "fecha=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Crear rama de backup
+        run: |
+          BRANCH_NAME="backup/${{ steps.fecha.outputs.fecha }}"
+
+          # Verificar si la rama ya existe
+          if git ls-remote --exit-code --heads origin "$BRANCH_NAME"; then
+            echo "✅ La rama $BRANCH_NAME ya existe. Se omite la creación."
+          else
+            git checkout -b "$BRANCH_NAME"
+            git push origin "$BRANCH_NAME"
+            echo "✅ Rama de backup creada: $BRANCH_NAME"
+          fi
