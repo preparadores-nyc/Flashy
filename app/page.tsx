@@ -22,6 +22,55 @@ export default function HomePage() {
         </p>
       </section>
 
+      {/* Trust / Validation Block */}
+      <section className="trust" style={{ marginBottom: 28, animation: "fadeUp 0.8s 0.45s ease-out both" }}>
+        <div className="trust-grid">
+          <div className="glass trust-item" style={{ animation: "fadeUp 0.8s ease-out both", animationDelay: "0.5s" }}>
+            <div style={{ color: "var(--aero-cyan)", fontSize: 28, marginBottom: 12 }} aria-hidden>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 1l3 3 5 1-3 4 1 5-5-2-5 2 1-5-3-4 5-1 3-3z" fill="currentColor" />
+              </svg>
+            </div>
+            <h4>Seguridad del viaje</h4>
+            <p className="small">Protección y asistencia 24/7 durante cada recorrido.</p>
+          </div>
+
+          <div className="glass trust-item" style={{ animation: "fadeUp 0.8s ease-out both", animationDelay: "0.55s" }}>
+            <div style={{ color: "var(--aero-cyan)", fontSize: 28, marginBottom: 12 }} aria-hidden>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" fill="none" />
+                <path d="M8 12l2 2 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+              </svg>
+            </div>
+            <h4>Geocerca activa</h4>
+            <p className="small">Rutas y solicitudes válidas solo dentro de la Región Metropolitana.</p>
+          </div>
+
+          <div className="glass trust-item" style={{ animation: "fadeUp 0.8s ease-out both", animationDelay: "0.6s" }}>
+            <div style={{ color: "var(--aero-cyan)", fontSize: 28, marginBottom: 12 }} aria-hidden>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="7" width="18" height="12" rx="2" stroke="currentColor" strokeWidth="1.6" fill="none" />
+                <circle cx="8.5" cy="13.5" r="1.3" fill="currentColor" />
+                <circle cx="15.5" cy="13.5" r="1.3" fill="currentColor" />
+              </svg>
+            </div>
+            <h4>Conductores verificados</h4>
+            <p className="small">Socios validados por identidad, licencia y documentación.</p>
+          </div>
+
+          <div className="glass trust-item" style={{ animation: "fadeUp 0.8s ease-out both", animationDelay: "0.65s" }}>
+            <div style={{ color: "var(--aero-cyan)", fontSize: 28, marginBottom: 12 }} aria-hidden>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 7h20v10H2z" stroke="currentColor" strokeWidth="1.6" fill="none" />
+                <path d="M6 11h.01M10 11h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
+            </div>
+            <h4>Pago seguro</h4>
+            <p className="small">Transacciones cifradas y opciones múltiples de pago.</p>
+          </div>
+        </div>
+      </section>
+
       {/* Portal Cards */}
       <div className="grid" style={{ marginBottom: 40 }}>
         <Link href="/rider" className="glass card-link" style={{ animationDelay: "0.4s", animation: "fadeUp 0.8s ease-out both" }}>

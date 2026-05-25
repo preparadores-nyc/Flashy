@@ -596,6 +596,61 @@ button.accent:hover {
   font-size: 0.95rem;
   line-height: 1.7;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TRUST / VALIDATION BLOCK
+   Dark glass background with cyan icons and ::before highlight
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.trust {
+  width: 100%;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.trust-item {
+  padding: 22px;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(0,0,0,0.42), rgba(255,255,255,0.02));
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+
+.trust-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 40%;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent);
+}
+
+.trust-item .small {
+  color: rgba(255,255,255,0.65);
+}
+
+.trust-item h4 {
+  margin: 0 0 6px 0;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  color: var(--aero-white);
+}
+
+.trust-item svg {
+  display: inline-block;
+  filter: drop-shadow(0 6px 18px rgba(0,229,255,0.08));
+}
+
 /* ═══════════════════════════════════════════════════════════════
    ACTIONS BAR
    ═══════════════════════════════════════════════════════════════ */
