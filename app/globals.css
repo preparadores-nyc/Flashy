@@ -796,14 +796,36 @@ pre {
   }
 
   .container {
-    padding: 30px 0 60px;
+    padding: 24px 0 48px;
   }
 
-  .panel {
+  .hero,
+  .panel,
+  .trust,
+  .benefits {
     padding: 24px;
   }
 
   .brand {
-    font-size: 42px;
+    font-size: 2.5rem;
+  }
+
+  .fx-orb.a {
+    width: 200px;
+    height: 200px;
+  }
+
+  .fx-orb.b {
+    width: 250px;
+    height: 250px;
+  }
+
+  .fx-orb.c {
+    width: 175px;
+    height: 175px;
+  }
+
+  button {
+    min-height: 44px;
   }
 }
