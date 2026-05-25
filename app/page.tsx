@@ -113,6 +113,27 @@ export default function HomePage() {
         </div>
       </div>
 
+      <section className="benefits" style={{ marginBottom: 40 }}>
+        <h2 className="title" style={{ animation: "fadeUp 0.8s 0.55s ease-out both" }}>Benefits</h2>
+        <div className="benefits-grid">
+          <div className="glass benefit-card" style={{ animation: "fadeUp 0.8s ease-out both", animationDelay: "0.6s" }}>
+            <div className="stat">500+</div>
+            <h3>Conductores verificados</h3>
+            <p className="description">Socios seleccionados con licencia, documentación y validación completa para viajes confiables.</p>
+          </div>
+          <div className="glass benefit-card" style={{ animation: "fadeUp 0.8s ease-out both", animationDelay: "0.7s" }}>
+            <div className="stat">98%</div>
+            <h3>Satisfacción del cliente</h3>
+            <p className="description">Calidad de servicio premium y experiencia ágil que mantiene a los pasajeros felices en cada viaje.</p>
+          </div>
+          <div className="glass benefit-card" style={{ animation: "fadeUp 0.8s ease-out both", animationDelay: "0.8s" }}>
+            <div className="stat">RM</div>
+            <h3>Cobertura en toda la RM</h3>
+            <p className="description">Disponible en todo Santiago con geocerca inteligente, viajes rápidos y soporte local.</p>
+          </div>
+        </div>
+      </section>
+
       {/* Bottom Section */}
       <div className="glass panel" style={{ textAlign: "center", animation: "fadeUp 0.8s 0.7s ease-out both" }}>
         <h3 style={{

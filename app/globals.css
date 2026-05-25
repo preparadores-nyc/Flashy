@@ -557,7 +557,45 @@ button.accent:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.benefits {
+  display: grid;
+  gap: 18px;
+}
 
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.benefit-card {
+  text-align: center;
+  padding: 34px 26px;
+}
+
+.benefit-card .stat {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 900;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--aero-cyan), var(--aero-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.benefit-card h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--aero-white);
+}
+
+.benefit-card .description {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
 /* ═══════════════════════════════════════════════════════════════
    ACTIONS BAR
    ═══════════════════════════════════════════════════════════════ */
