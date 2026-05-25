@@ -1,8 +1,90 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function HomePage() {
+  useEffect(() => {
+    // IntersectionObserver: reveal elements with fadeUp when they enter viewport
+    const selector = [
+      ".hero",
+      ".trust",
+      ".grid",
+      ".triple",
+      ".benefits",
+      ".panel",
+      ".card-link",
+      ".metric",
+      ".benefit-card",
+      ".trust-item"
+    ].join(", ");
+
+    const targets = Array.from(document.querySelectorAll(selector));
+
+    // set initial hidden state
+    targets.forEach((el) => {
+      (el as HTMLElement).style.opacity = "0";
+      // keep transform baseline off-screen to match fadeUp
+      (el as HTMLElement).style.transform = "translateY(30px)";
+    });
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, i) => {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            // stagger delay based on index among observed
+            const idx = Math.max(0, targets.indexOf(el));
+            const delay = (idx || 0) * 0.06;
+            el.style.animation = `fadeUp 0.8s ${delay}s ease-out both`;
+            // once revealed, unobserve to avoid re-triggering
+            io.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    targets.forEach((t) => io.observe(t));
+
+    // Parallax for floating orbs: adjust top/bottom based on scroll without touching transform animation
+    const orbs = Array.from(document.querySelectorAll<HTMLElement>(".fx-orb"));
+    const orbBases: { el: HTMLElement; top?: number; bottom?: number; isBottom: boolean }[] = [];
+    orbs.forEach((o) => {
+      const cs = getComputedStyle(o);
+      const top = cs.top !== "" && cs.top !== "auto" ? parseFloat(cs.top) : undefined;
+      const bottom = cs.bottom !== "" && cs.bottom !== "auto" ? parseFloat(cs.bottom) : undefined;
+      orbBases.push({ el: o, top, bottom, isBottom: bottom !== undefined });
+    });
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY || window.pageYOffset;
+          orbBases.forEach((b, i) => {
+            const factor = (i % 2 === 0 ? 1 : -1) * (0.02 + i * 0.01);
+            const offset = Math.round(scrollY * factor);
+            if (b.isBottom && b.bottom !== undefined) {
+              b.el.style.bottom = `${b.bottom + offset}px`;
+            } else if (b.top !== undefined) {
+              b.el.style.top = `${b.top + offset}px`;
+            }
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <main className="container">
       {/* Floating 3D Orbs */}
